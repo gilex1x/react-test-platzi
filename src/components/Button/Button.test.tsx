@@ -4,9 +4,9 @@ import '@testing-library/jest-dom';
 import { Button } from './Button';
 
 describe('<Button /> tests',()=>{
-    it('Deberia renderizra',()=>{
-        render(<Button label='click'/>);
-        const button = screen.getByText('click');
+    it('Deberia renderizra',async()=>{
+        const {getByText} = await render(<Button label='click'/>);
+        const button =getByText('click');
         expect(button).toBeInTheDocument();
     });
     it('Deberia hacer click',async()=>{
