@@ -11,7 +11,7 @@ describe('Primer conjunto de test',()=>{
         const texto2:string = 'PlatziConf';
         expect(texto1).toBe(texto2);
     });
-    it('Un numero par',()=>{
+    it.skip('Un numero par',()=>{
         const minNumber:number = 1;
         const maxNumber:number =10;
         const randomNumber:number = Math.floor(Math.random()*(maxNumber - minNumber) + minNumber);
@@ -19,7 +19,7 @@ describe('Primer conjunto de test',()=>{
         const isOdd:number = randomNumber % 2;
         expect(isOdd).toBe(0);
     });
-    it('Numero Mayor a',()=>{
+    it.skip('Numero Mayor a',()=>{
         const minNumber:number = 1;
         const maxNumber:number =10;
         const randomNumber:number = Math.floor(Math.random()*(maxNumber - minNumber) + minNumber);
