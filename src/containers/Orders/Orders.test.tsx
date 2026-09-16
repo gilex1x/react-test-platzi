@@ -81,5 +81,5 @@ describe('<Orders/>', () => {
             const totalOrdersElment = screen.getByTestId("totalOrders").textContent;
             expect(totalOrdersElment).toBe(totalOrders.toString());
         })
-    })
+    });
 });
