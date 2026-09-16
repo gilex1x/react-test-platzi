@@ -1,11 +1,11 @@
 import { describe, it, expect, vi } from "vitest";
 import type { Mock } from "vitest";
-import { render, screen, fireEvent, act, waitFor } from "@testing-library/react";
+import { render, screen,waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { SessionProvider, useSession } from "../../context/AuthContext";
 import { getOrders } from "../../services/getOrders";
+import { getSummaryOrders } from "../../utils/sumamry";
 import { Orders } from "./Orders";
-
 
 vi.mock('../../services/getOrders', () => ({
     getOrders: vi.fn()
@@ -73,4 +73,13 @@ describe('<Orders/>', () => {
             expect(ordersItems).toHaveLength(mockedOrders.length);
         })
     });
+    it('Deberia mostrar superadmin section',async()=>{
+        mockedGetOrders.mockResolvedValue(mockedOrders);
+        await renderOrders('superadmin');
+        await waitFor(()=>{
+            const {totalOrders} = getSummaryOrders(mockedOrders);
+            const totalOrdersElment = screen.getByTestId("totalOrders").textContent;
+            expect(totalOrdersElment).toBe(totalOrders.toString());
+        })
+    })
 });
